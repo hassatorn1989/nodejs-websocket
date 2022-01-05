@@ -19,12 +19,24 @@ wss.on("connection", function connection(ws) {
   });
   ws.send("init message to client");
   // ส่ง data ไปที่ client เชื่อมกับ websocket server นี้
-//   setInterval(() => {
-//     const data = {
-//       posX: Math.floor(Math.random() * 800 + 1),
-//       posY: Math.floor(Math.random() * 600 + 1)
-//     };
-//     console.log("sending to data to client:", data);
-//     ws.send(JSON.stringify(data));
-//   }, 1000);
+  // setInterval(() => {
+  //   // const data = {
+  //   //   posX: Math.floor(Math.random() * 800 + 1),
+  //   //   posY: Math.floor(Math.random() * 600 + 1)
+  //   // };
+  //   const data = {
+  //     "DateTime": "2020-11-18 08:54:20",
+  //     "CameraIP": "0.0.0.0",
+  //     "PersonNo": "10000",
+  //   }
+  //   console.log("sending to data to client:", data);
+  //   ws.send(JSON.stringify(data));
+  // }, 1000);
+  const data = {
+    "DateTime": "2020-11-18 08:54:20",
+    "CameraIP": "0.0.0.0",
+    "PersonNo": "10000",
+  }
+  console.log("sending to data to client:", data);
+  ws.send(JSON.stringify(data));
 });

@@ -8,23 +8,31 @@ connection.onopen = function () {
 connection.onerror = function (error) {
   console.error('WebSocket Error ' + error);
 };
-connection.onmessage = function (e) {
+connection.onmessage = function (response) {
   // log ค่าที่ถูกส่งมาจาก server
-  console.log("message from server: ", e.data)
-  createDivElement(e.data)
+  console.log("message from server: ", response.data)
+  // createDivElement(response.data)
 };
-function createDivElement(data) {
-  var newDiv = document.createElement('div')
-  newDiv.setAttribute("id", "myDiv");
-  newDiv.innerHTML = data
-  document.body.appendChild(newDiv)
-}
- $(document).ready(function() {
-   $("#btnClick").click(function(e) {
-       connection.send("asdasdasdas");
-    //  console.log("asdasdasd");
-   });
- });
+
+var i = 0;
+setInterval(() => {
+  connection.send("test" + i);
+  i++;
+}, 1000);
+
+
+// function createDivElement(data) {
+//   var newDiv = document.createElement('div')
+//   newDiv.setAttribute("id", "myDiv");
+//   newDiv.innerHTML = data
+//   document.body.appendChild(newDiv)
+// }
+//  $(document).ready(function() {
+//    $("#btnClick").click(function(e) {
+//        connection.send("asdasdasdas");
+//     //  console.log("asdasdasd");
+//    });
+//  });
 // connection.send(JSON.stringify(data));
 // setInterval(() => {
 //   const data = {
